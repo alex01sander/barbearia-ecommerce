@@ -75,3 +75,37 @@ export const HomeAboutImage = styled.div`
     width: 50%;
     height: 100vh;
 `
+
+export const HomeService = styled.div` 
+  background-image: url(https://img.freepik.com/fotos-gratis/fundo-da-parede-de-tijolo-rustico_53876-92955.jpg?w=740&t=st=1667416564~exp=1667417164~hmac=4af1494ae9b8713d5d7e54421cdbdefed829712c2876e4ae8f43318467c317c9);
+  background-attachment: fixed;
+  
+`
+export const HomeServiceTitle = styled.h3`
+  font-size: 50px;
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+`
+
+export const HomeCards = styled.div`
+  display: grid;
+  grid-template:  1fr 1fr / 1fr 1fr 1fr;
+  justify-content:space-around;
+`
+
+export const HomeCard = styled.div`
+  background-image: url(https://img.freepik.com/fotos-gratis/close-up-homem-senior-no-salao-de-cabeleireiro_23-2149220586.jpg?w=360&t=st=1667416077~exp=1667416677~hmac=9d2a64ec6b2a6d11c568b403fbe61607fda31e95caead6e1122f346798c78942);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #1a1a1a;
+  background-position: center;
+  color: white;
+  text-align: center;
+  width: 350px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 5px;
+`

@@ -1,4 +1,4 @@
-import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeConteiner, HomeContent, HomeSubTitle, HomeTitle } from './home.styles'
+import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './home.styles'
 
 const HomePage = () => {
   return (
@@ -29,6 +29,17 @@ const HomePage = () => {
 
             <HomeAboutImage/>
         </HomeAbout>
+        <HomeService>
+            <HomeServiceTitle>Nossos Serviços</HomeServiceTitle>
+            <HomeCards>
+              <HomeCard>Cabelo</HomeCard>
+              <HomeCard/>
+              <HomeCard/>
+              <HomeCard/>
+              <HomeCard/>
+              <HomeCard/>
+            </HomeCards>
+        </HomeService>
     </>
 
   )
