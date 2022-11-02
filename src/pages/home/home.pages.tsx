@@ -1,8 +1,10 @@
+import HeaderComponents from '../../components/header/header.components'
 import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './home.styles'
 
 const HomePage = () => {
   return (
     <>
+        <HeaderComponents/>
         <HomeConteiner>
 
         <HomeContent>
