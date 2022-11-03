@@ -4,8 +4,15 @@ import CustomInput from '../../components/custom-input/custom-input.components'
 import CustomButton from '../../components/cutom-buttom/custom-button.components'
 import HeaderComponents from '../../components/header/header.components'
 import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from './loginPages.styles'
+import { useForm } from 'react-hook-form'
 
 const LoginPage = () => {
+  const { register, formState: { errors }, handleSubmit } = useForm()
+
+  const handleSubmitPress = (data: any) => {
+    console.log(data)
+  }
+
   return (
         <>
         <HeaderComponents/>
@@ -20,12 +27,16 @@ const LoginPage = () => {
                     <LoginSubtitle>ou entre com o seu e-mail</LoginSubtitle>
 
                     <LoginInputContainer>
-                        <CustomInput placeholder='Digite o seu e-mail'/>
+                        <p>Email</p>
+                        <CustomInput hasError={!!errors?.email}
+                        placeholder='Digite o seu e-mail' {...register('email', { required: true })}/>
                     </LoginInputContainer>
                     <LoginInputContainer>
-                        <CustomInput placeholder='Digite sua Senha'/>
+                        <p>Senha</p>
+                        <CustomInput hasError={!!errors?.password}
+                         placeholder='Digite sua Senha' {...register('password', { required: true })}/>
                     </LoginInputContainer>
-                    <CustomButton startIcon={<ImEnter size={18}/>}>Entrar</CustomButton>
+                    <CustomButton startIcon={<ImEnter size={18}/>} onClick={() => handleSubmit(handleSubmitPress)()}>Entrar</CustomButton>
                 </LoginContent>
             </LoginContainer>
         </>
