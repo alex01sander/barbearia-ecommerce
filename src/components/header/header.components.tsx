@@ -16,13 +16,17 @@ const HeaderComponents = () => {
     navigate('/login')
   }
 
+  const handleSignUpClick = () => {
+    navigate('/signUp')
+  }
+
   return (
     <HeaderContainer>
         <HeaderTile onClick={handleHomeClick}>BarberShop</HeaderTile>
         <HeaderItems>
             <HeaderItem onClick={handleShopClick}>Loja</HeaderItem>
             <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
-            <HeaderItem>Cadastra-se</HeaderItem>
+            <HeaderItem onClick={handleSignUpClick}>Cadastra-se</HeaderItem>
             <HeaderItem><BsCart size={25} margin-left={10}/> 5 </HeaderItem>
 
         </HeaderItems>

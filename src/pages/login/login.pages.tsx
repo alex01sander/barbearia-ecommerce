@@ -8,8 +8,13 @@ import { useForm } from 'react-hook-form'
 import CustomButton from '../../components/cutom-butto/custom-button.components'
 import InputErrorMessage from '../../components/input-error-message/input-error-mesage.components'
 
+interface LoginForm {
+  email: string
+  password: string
+}
+
 const LoginPage = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm()
+  const { register, formState: { errors }, handleSubmit } = useForm<LoginForm>()
 
   const handleSubmitPress = (data: any) => {
     console.log(data)
@@ -49,7 +54,7 @@ const LoginPage = () => {
                     <LoginInputContainer>
                         <p>Senha</p>
                         <CustomInput hasError={!!errors?.password}
-                         placeholder='Digite sua Senha' {...register('password', { required: true })}/>
+                         placeholder='Digite sua Senha' {...register('password', { required: true })} type={'password'}/>
 
                          {errors?.password?.type === 'required' && (
                             <InputErrorMessage>A senha é obrigatória</InputErrorMessage>
