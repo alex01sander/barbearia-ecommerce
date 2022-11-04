@@ -24,6 +24,7 @@ const Catergories = () => {
   }, [])
 
   return (
+
     <CategoriesContainer>
         <CategoriesContent>
           {categories.map((category) => (
