@@ -8,7 +8,7 @@ export const CategoriesContainer = styled.div`
 `
 
 export const CategoriesContent = styled.div`
-    height: 100%;
+    height: 600px;
     width: 1920px;
     display: grid;
     grid-template-areas:
