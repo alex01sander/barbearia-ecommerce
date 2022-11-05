@@ -6,9 +6,12 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessage from '../../components/input-error-message/input-error-mesage.components'
+import { createUserWithEmailAndPassword } from '@firebase/auth'
+import { auth, db } from '../../config/firebase.config'
+import { addDoc, collection } from '@firebase/firestore'
 
 interface SignUpForm{
-    name: string
+    firstName: string
     lastName: string
     email: string
     password: string
@@ -19,8 +22,19 @@ const SignUpPages = () => {
   const { register, formState: { errors }, watch, handleSubmit } = useForm<SignUpForm>()
 
   const watchPassword = watch('password')
-  const handleClickPress = (data: SignUpForm) => {
-    console.log(data)
+  const handleClickPress = async (data: SignUpForm) => {
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password)
+
+      await addDoc(collection(db, 'users  '), {
+        id: userCredentials.user.uid,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: userCredentials.user.email
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <>
@@ -31,9 +45,9 @@ const SignUpPages = () => {
             <SignUpHeadline>Cadastre-se</SignUpHeadline>
                 <SignUpInputContainer>
                     <p>Nome</p>
-                    <CustomInput hasError={!!errors?.name}
-                    placeholder='Digite seu nome' {...register('name', { required: true })}/>
-                    {errors?.name?.type === 'required' && (
+                    <CustomInput hasError={!!errors?.firstName}
+                    placeholder='Digite seu nome' {...register('firstName', { required: true })}/>
+                    {errors?.firstName?.type === 'required' && (
                         <InputErrorMessage>Nome obrigatório</InputErrorMessage>
                     )}
                 </SignUpInputContainer>
