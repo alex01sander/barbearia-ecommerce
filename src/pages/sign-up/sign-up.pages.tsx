@@ -6,7 +6,7 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessage from '../../components/input-error-message/input-error-mesage.components'
-import { createUserWithEmailAndPassword } from '@firebase/auth'
+import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from '@firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from '@firebase/firestore'
 
@@ -19,7 +19,7 @@ interface SignUpForm{
 }
 
 const SignUpPages = () => {
-  const { register, formState: { errors }, watch, handleSubmit } = useForm<SignUpForm>()
+  const { register, formState: { errors }, watch, setError, handleSubmit } = useForm<SignUpForm>()
 
   const watchPassword = watch('password')
   const handleClickPress = async (data: SignUpForm) => {
@@ -33,7 +33,11 @@ const SignUpPages = () => {
         email: userCredentials.user.email
       })
     } catch (error) {
-      console.log(error)
+      const _error = error as AuthError
+
+      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+        return setError('email', { type: 'alreadyInUse' })
+      }
     }
   }
   return (
@@ -79,11 +83,14 @@ const SignUpPages = () => {
                     <p>Senha</p>
                     <CustomInput hasError={!!errors?.password}
                     placeholder='Digite sua Senha' type='password' {...register('password', {
-                      required: true
+                      required: true, minLength: 6
                     })}/>
                      {errors?.password?.type === 'required' && (
                         <InputErrorMessage>Senha obrigatória</InputErrorMessage>
                      )}
+                      {errors?.password?.type === 'minLength' && (
+                        <InputErrorMessage>A Senha precisa ter no minimo 6 caracteres</InputErrorMessage>
+                      )}
                 </SignUpInputContainer>
                 <SignUpInputContainer>
                     <p>Confirme sua Senha</p>
@@ -95,6 +102,9 @@ const SignUpPages = () => {
                           return value === watchPassword
                         }
                       })} />
+                       {errors?.password?.type === 'minLength' && (
+                        <InputErrorMessage>A Senha precisa ter no minimo 6 caracteres</InputErrorMessage>
+                       )}
                      {errors?.passwordConfirmation?.type === 'required' && (
                         <InputErrorMessage>Confirme sua Senha obrigatório</InputErrorMessage>
                      )}
