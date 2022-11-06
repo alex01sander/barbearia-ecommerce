@@ -6,11 +6,27 @@ import ShopPages from './pages/shop/shop.pages'
 import LoginPage from './pages/login/login.pages'
 import SignUpPages from './pages/sign-up/sign-up.pages'
 import { onAuthStateChanged } from '@firebase/auth'
-import { auth } from './config/firebase.config'
-import { FunctionComponent } from 'react'
+import { auth, db } from './config/firebase.config'
+import { FunctionComponent, useContext } from 'react'
+import { UserContext } from './context/use.context'
+import { collection, getDocs, query, where } from '@firebase/firestore'
+
 const App: FunctionComponent = () => {
-  onAuthStateChanged(auth, (user) => {
+  const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext)
+  onAuthStateChanged(auth, async (user) => {
     console.log(user)
+    const isSigningOut = isAuthenticated && !user
+    if (isSigningOut) {
+      return logoutUser()
+    }
+
+    const isSigningIn = !isAuthenticated && user
+    if (isSigningIn) {
+      const querySnapshot = await getDocs(query(collection(db, 'users'), where('id', '==', user.uid)))
+
+      const userFromFirestore = querySnapshot.docs[0]?.data()
+      return loginUser(userFromFirestore as any)
+    }
   })
 
   return (
