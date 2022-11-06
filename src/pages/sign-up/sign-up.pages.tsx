@@ -9,6 +9,9 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from '@firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from '@firebase/firestore'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../../context/use.context'
+import { useNavigate } from 'react-router-dom'
 
 interface SignUpForm{
     firstName: string
@@ -20,6 +23,15 @@ interface SignUpForm{
 
 const SignUpPages = () => {
   const { register, formState: { errors }, watch, setError, handleSubmit } = useForm<SignUpForm>()
+
+  const { isAuthenticated } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/shop')
+    }
+  }, [isAuthenticated])
 
   const watchPassword = watch('password')
   const handleClickPress = async (data: SignUpForm) => {
