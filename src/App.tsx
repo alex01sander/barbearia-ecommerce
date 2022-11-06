@@ -5,7 +5,14 @@ import HomePage from './pages/home/home.pages'
 import ShopPages from './pages/shop/shop.pages'
 import LoginPage from './pages/login/login.pages'
 import SignUpPages from './pages/sign-up/sign-up.pages'
-function App () {
+import { onAuthStateChanged } from '@firebase/auth'
+import { auth } from './config/firebase.config'
+import { FunctionComponent } from 'react'
+const App: FunctionComponent = () => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user)
+  })
+
   return (
     <BrowserRouter>
       <Routes>
