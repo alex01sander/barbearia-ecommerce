@@ -7,17 +7,19 @@ import LoginPage from './pages/login/login.pages'
 import SignUpPages from './pages/sign-up/sign-up.pages'
 import { onAuthStateChanged } from '@firebase/auth'
 import { auth, db } from './config/firebase.config'
-import { FunctionComponent, useContext } from 'react'
+import { FunctionComponent, useContext, useState } from 'react'
 import { UserContext } from './context/use.context'
 import { collection, getDocs, query, where } from '@firebase/firestore'
 
 const App: FunctionComponent = () => {
+  const [isInitializing, setIsInitializing] = useState(true)
   const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext)
   onAuthStateChanged(auth, async (user) => {
     console.log(user)
     const isSigningOut = isAuthenticated && !user
     if (isSigningOut) {
-      return logoutUser()
+      logoutUser()
+      return setIsInitializing(false)
     }
 
     const isSigningIn = !isAuthenticated && user
@@ -25,10 +27,11 @@ const App: FunctionComponent = () => {
       const querySnapshot = await getDocs(query(collection(db, 'users'), where('id', '==', user.uid)))
 
       const userFromFirestore = querySnapshot.docs[0]?.data()
-      return loginUser(userFromFirestore as any)
+      loginUser(userFromFirestore as any)
+      return setIsInitializing(false)
     }
   })
-
+  if (isInitializing) return null
   return (
     <BrowserRouter>
       <Routes>
