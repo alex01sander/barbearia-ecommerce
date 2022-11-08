@@ -9,9 +9,10 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from '@firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from '@firebase/firestore'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../context/use.context'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/loading.component'
 
 interface SignUpForm{
     firstName: string
@@ -24,6 +25,7 @@ interface SignUpForm{
 const SignUpPages = () => {
   const { register, formState: { errors }, watch, setError, handleSubmit } = useForm<SignUpForm>()
 
+  const [isLoading, setIsLoading] = useState(false)
   const { isAuthenticated } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -36,6 +38,7 @@ const SignUpPages = () => {
   const watchPassword = watch('password')
   const handleClickPress = async (data: SignUpForm) => {
     try {
+      setIsLoading(true)
       const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password)
 
       await addDoc(collection(db, 'users  '), {
@@ -51,11 +54,14 @@ const SignUpPages = () => {
       if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
         return setError('email', { type: 'alreadyInUse' })
       }
+    } finally {
+      setIsLoading(false)
     }
   }
   return (
     <>
         <HeaderComponents/>
+        {isLoading && <Loading/>}
         <SignUpContainer>
 
             <SignUpContent>
