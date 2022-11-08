@@ -10,9 +10,10 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from '@firebase/auth'
 import { auth, db, googleProvider } from '../../config/firebase.config'
 import { addDoc, collection, getDocs, query, where } from '@firebase/firestore'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../context/use.context'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/loading.component'
 
 interface LoginForm {
   email: string
@@ -21,6 +22,8 @@ interface LoginForm {
 
 const LoginPage = () => {
   const { register, formState: { errors }, setError, handleSubmit } = useForm<LoginForm>()
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const { isAuthenticated } = useContext(UserContext)
 
@@ -33,6 +36,7 @@ const LoginPage = () => {
   }, [isAuthenticated])
   const handleSignInWithGooglePress = async () => {
     try {
+      setIsLoading(true)
       const userCredentials = await signInWithPopup(auth, googleProvider)
 
       const querySnapshot = await getDocs(query(collection(db, 'users'), where('id', '==', userCredentials.user.uid)))
@@ -51,11 +55,14 @@ const LoginPage = () => {
         })
       }
     } catch (error) {
-
+      console.log(error)
+    } finally {
+      setIsLoading(false)
     }
   }
   const handleSubmitPress = async (data: LoginForm) => {
     try {
+      setIsLoading(true)
       const useCredentials = await signInWithEmailAndPassword(auth, data.email, data.password)
       console.log(useCredentials)
     } catch (error) {
@@ -68,12 +75,15 @@ const LoginPage = () => {
       if (_error.code === AuthErrorCodes.USER_DELETED) {
         return setError('password', { type: 'notFound' })
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
   return (
         <>
         <HeaderComponents/>
+        {isLoading && <Loading/>}
             <LoginContainer>
                 <LoginContent>
                 <LoginHeadline>Entre com a sua conta</LoginHeadline>
