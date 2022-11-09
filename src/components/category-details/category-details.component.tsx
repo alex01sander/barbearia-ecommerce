@@ -23,7 +23,7 @@ const CategoryDetails: FunctionComponent<CategoryDetailsProps> = ({
   const navigate = useNavigate()
 
   const handleBackClick = () => {
-    navigate('/')
+    navigate('/shop')
   }
 
   useEffect(() => {
