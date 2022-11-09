@@ -6,9 +6,9 @@ import { CategoryContext } from '../../context/category.context'
 import Loading from '../loading/loading.component'
 
 const Catergories = () => {
-  const { categories, isLoading, fecthCategories } = useContext(CategoryContext)
+  const { categories, isLoading, fetchCategories } = useContext(CategoryContext)
   useEffect(() => {
-    fecthCategories()
+    fetchCategories()
   }, [])
 
   return (

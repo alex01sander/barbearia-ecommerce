@@ -7,7 +7,7 @@ import Category from '../types/category.types'
 interface ICategoryContext {
     categories: Category[]
     isLoading: boolean
-    fecthCategories: () => Promise<void>
+    fetchCategories: () => Promise<void>
 }
 
 interface CategoryProps{
@@ -17,7 +17,7 @@ interface CategoryProps{
 export const CategoryContext = createContext<ICategoryContext>({
   isLoading: false,
   categories: [],
-  fecthCategories: () => Promise.resolve()
+  fetchCategories: () => Promise.resolve()
 })
 
 const CategoryContextProvider: FunctionComponent<CategoryProps> = ({ children }) => {
@@ -25,7 +25,7 @@ const CategoryContextProvider: FunctionComponent<CategoryProps> = ({ children })
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const fecthCategories = async () => {
+  const fetchCategories = async () => {
     try {
       setIsLoading(true)
       const categoriesFromFirestore: Category[] = []
@@ -44,7 +44,7 @@ const CategoryContextProvider: FunctionComponent<CategoryProps> = ({ children })
   }
   return (
 
-    <CategoryContext.Provider value={{ categories, isLoading, fecthCategories }}>
+    <CategoryContext.Provider value={{ categories, isLoading, fetchCategories }}>
         {children}
     </CategoryContext.Provider>
   )
