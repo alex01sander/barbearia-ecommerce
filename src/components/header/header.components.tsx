@@ -5,9 +5,11 @@ import { signOut } from '@firebase/auth'
 import { auth } from '../../config/firebase.config'
 import { useContext } from 'react'
 import { UserContext } from '../../context/use.context'
+import { CartContext } from '../../context/cart.contex'
 const HeaderComponents = () => {
   const navigate = useNavigate()
   const { isAuthenticated } = useContext(UserContext)
+  const { toggleCart } = useContext(CartContext)
 
   const handleHomeClick = () => {
     navigate('/')
@@ -41,7 +43,9 @@ const HeaderComponents = () => {
               <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
               </>
             )}
-            <HeaderItem><BsCart size={25} margin-left={10}/> 5 </HeaderItem>
+            <HeaderItem onClick={toggleCart}>
+              <BsCart size={25} margin-left={10}/> 5
+              </HeaderItem>
 
         </HeaderItems>
     </HeaderContainer>
