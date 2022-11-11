@@ -3,9 +3,10 @@ import CustomButton from '../cutom-butto/custom-button.components'
 import { CartContainer, CartContent, CartEscapeArea, CartTitle, CartTotal } from './cart.styles'
 import { BsCartCheck } from 'react-icons/bs'
 import { CartContext } from '../../context/cart.contex'
+import CartItem from '../cart-item/cart-item.component'
 
 const Cart: FunctionComponent = () => {
-  const { isVisible, toggleCart } = useContext(CartContext)
+  const { isVisible, products, toggleCart } = useContext(CartContext)
   return (
 
     <CartContainer isVisible={isVisible}>
@@ -13,7 +14,7 @@ const Cart: FunctionComponent = () => {
         <CartContent>
             <CartTitle>Seu Carrinho</CartTitle>
 
-            {/* produtos */}
+            {products.map(product => <CartItem product={product} key={product.id}/>)}
             <CartTotal>Total: R$ 100</CartTotal>
             <CustomButton startIcon={<BsCartCheck/>}>Ir para o checkout</CustomButton>
         </CartContent>
