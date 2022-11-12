@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useMemo, useState } from 'react'
+import React, { createContext, FunctionComponent, useEffect, useMemo, useState } from 'react'
 import CartProduct from '../types/cart.types'
 import Product from '../types/products.types'
 
@@ -33,6 +33,16 @@ export const CartContext = createContext<ICartContextProps>({
 const CartContextProvider: FunctionComponent<CartContestProps> = ({ children }) => {
   const [isVisible, setIsVsible] = useState(false)
   const [products, setProducts] = useState<CartProduct[]>([])
+
+  useEffect(() => {
+    const productsFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')!)
+
+    setProducts(productsFromLocalStorage)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(products))
+  }, [products])
 
   const productsTotalPrice = useMemo(() => {
     return products.reduce((acc, currentProduct) => {
