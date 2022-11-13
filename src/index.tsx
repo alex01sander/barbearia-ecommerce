@@ -1,17 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import { Provider } from 'react-redux'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import UserContextProvider from './context/use.context'
 import CategoryContextProvider from './context/category.context'
 import CartContextProvider from './context/cart.contex'
+import store from './store/store'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <UserContextProvider>
       <CategoryContextProvider>
         <CartContextProvider>
@@ -19,6 +22,7 @@ root.render(
         </CartContextProvider>
       </CategoryContextProvider>
     </UserContextProvider>
+    </Provider>
   </React.StrictMode>
 )
 
