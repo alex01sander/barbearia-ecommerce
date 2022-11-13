@@ -46,13 +46,13 @@ const CartContextProvider: FunctionComponent<CartContestProps> = ({ children }) 
 
   const productsTotalPrice = useMemo(() => {
     return products.reduce((acc, currentProduct) => {
-      return acc + currentProduct.price * currentProduct.qunatity
+      return acc + currentProduct.price * currentProduct.quantity
     }, 0)
   }, [products])
 
   const productsCount = useMemo(() => {
     return products.reduce((acc, currentProduct) => {
-      return acc + currentProduct.qunatity
+      return acc + currentProduct.quantity
     }, 0)
   }, [products])
 
@@ -65,11 +65,11 @@ const CartContextProvider: FunctionComponent<CartContestProps> = ({ children }) 
 
     if (productIsAlreadyInCart) {
       return setProducts(products => products.map(item => item.id === product.id
-        ? { ...item, qunatity: item.qunatity + 1 }
+        ? { ...item, quantity: item.quantity + 1 }
         : item))
     }
 
-    setProducts((prevState) => [...prevState, { ...product, qunatity: 1 }])
+    setProducts((prevState) => [...prevState, { ...product, quantity: 1 }])
   }
 
   const removeProductFromCart = (productId: string) => {
@@ -78,7 +78,7 @@ const CartContextProvider: FunctionComponent<CartContestProps> = ({ children }) 
 
   const increaseProductQuantity = (productId: string) => {
     setProducts(products => products.map(product => product.id === productId
-      ? { ...product, qunatity: product.qunatity + 1 }
+      ? { ...product, quantity: product.quantity + 1 }
       : product))
   }
 
@@ -86,9 +86,9 @@ const CartContextProvider: FunctionComponent<CartContestProps> = ({ children }) 
     setProducts(products => products.map(product => product.id === productId
       ? {
           ...product,
-          qunatity: product.qunatity - 1
+          quantity: product.quantity - 1
         }
-      : product).filter((product) => product.qunatity > 0))
+      : product).filter((product) => product.quantity > 0))
   }
 
   return (
