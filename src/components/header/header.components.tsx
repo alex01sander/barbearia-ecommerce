@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { useContext } from 'react'
 
-import { CartContext } from '../../context/cart.contex'
 import { useSelector, useDispatch } from 'react-redux'
 import { signOut } from '@firebase/auth'
 import { auth } from '../../config/firebase.config'
+import { logout } from '../../store/reducers/user/user.actions'
+import { CartContext } from '../../context/cart.contex'
 
 const HeaderComponents = () => {
   const navigate = useNavigate()
@@ -33,7 +34,7 @@ const HeaderComponents = () => {
   }
 
   const handleSignOutClick = () => {
-    dispatch({ type: 'LOGOUT_USER' })
+    dispatch(logout())
     signOut(auth)
   }
 

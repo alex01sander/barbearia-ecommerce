@@ -18,6 +18,8 @@ import CheckoutPages from './pages/checkout/checkout.pages'
 import Authenctication from './components/Authentication Guard/authentication.component'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { LoginUser, logout } from './store/reducers/user/user.actions'
+
 const App: FunctionComponent = () => {
   const [isInitializing, setIsInitializing] = useState(true)
   const { isAuthenticated } = useSelector((rootReducer : any) => rootReducer.userReducer)
@@ -28,7 +30,7 @@ const App: FunctionComponent = () => {
     onAuthStateChanged(auth, async (user) => {
       const isSigningOut = isAuthenticated && !user
       if (isSigningOut) {
-        dispatch({ type: 'LOGOUT_USER' })
+        dispatch(logout())
         return setIsInitializing(false)
       }
 
@@ -38,7 +40,7 @@ const App: FunctionComponent = () => {
 
         const userFromFirestore = querySnapshot.docs[0]?.data()
 
-        dispatch({ type: 'LOGIN_USER', payload: userFromFirestore })
+        dispatch(LoginUser(userFromFirestore))
 
         return setIsInitializing(false)
       }
