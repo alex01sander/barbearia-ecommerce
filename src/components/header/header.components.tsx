@@ -2,19 +2,19 @@ import { HeaderContainer, HeaderItem, HeaderItems, HeaderTile } from './header.s
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
-import { useContext } from 'react'
-
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { signOut } from '@firebase/auth'
 import { auth } from '../../config/firebase.config'
 import { logout } from '../../store/reducers/user/user.actions'
-import { CartContext } from '../../context/cart.contex'
+
 import { toggleCart } from '../../store/reducers/cart/cart.actions'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { selectProductsCount } from '../../store/reducers/cart/cart.selector'
 
 const HeaderComponents = () => {
   const navigate = useNavigate()
-  const { isAuthenticated } = useSelector((rootReducer : any) => rootReducer.userReducer)
-  const { productsCount } = useContext(CartContext)
+  const { isAuthenticated } = useAppSelector((rootReducer) => rootReducer.userReducer)
+  const productsCount = useAppSelector(selectProductsCount)
 
   const dispatch = useDispatch()
 
