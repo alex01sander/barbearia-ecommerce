@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import rootReducer from './root-reducer'
-
+import thunk from 'redux-thunk'
 // @ts-ignore
 import storage from 'redux-persist/lib/storage'
 // @ts-ignore
@@ -17,6 +17,6 @@ const persistConfig = {
 
 const persistRootReducer: typeof rootReducer = persistReducer(persistConfig, rootReducer)
 
-export const Store = createStore(persistRootReducer, applyMiddleware(logger))
+export const Store = createStore(persistRootReducer, applyMiddleware(thunk, logger))
 export const persistedStore = persistStore(Store)
 export type RootState = ReturnType<typeof Store.getState>

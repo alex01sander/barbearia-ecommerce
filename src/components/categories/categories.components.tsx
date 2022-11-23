@@ -1,14 +1,19 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { CategoriesContainer, CategoriesContent } from './categories.styles'
 import CategoryItem from '../category-item/category-item.components'
 
-import { CategoryContext } from '../../context/category.context'
 import Loading from '../loading/loading.component'
+import { useDispatch } from 'react-redux'
+import { fetchCategories } from '../../store/reducers/category/category.action'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 const Catergories = () => {
-  const { categories, isLoading, fetchCategories } = useContext(CategoryContext)
+  const { categories, isLoading } = useAppSelector(state => state.categoryReducer)
+
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    fetchCategories()
+    dispatch(fetchCategories() as any)
   }, [])
 
   return (
