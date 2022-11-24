@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
+
+import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import rootReducer from './root-reducer'
 import thunk from 'redux-thunk'
@@ -15,8 +16,13 @@ const persistConfig = {
   whitelist: ['cartReducer']
 }
 
-const persistRootReducer: typeof rootReducer = persistReducer(persistConfig, rootReducer)
+const persistRootReducer: typeof rootReducer =
+persistReducer(persistConfig, rootReducer)
 
-export const Store = createStore(persistRootReducer, applyMiddleware(thunk, logger))
+export const Store = configureStore({
+  reducer: persistRootReducer,
+  middleware: [thunk, logger]
+})
+
 export const persistedStore = persistStore(Store)
 export type RootState = ReturnType<typeof Store.getState>
