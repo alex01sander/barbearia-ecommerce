@@ -2,8 +2,10 @@
 import Catergories from '../../components/categories/categories.components'
 
 import HeaderComponents from '../../components/header/header.components'
-
-import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './homes.styles'
+import { BsWhatsapp } from 'react-icons/bs'
+import { Contacts, ContactsContainer, ContactsInformation, ContactsInformations, Footer, HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './homes.styles'
+import { AiOutlineMail } from 'react-icons/ai'
+import { MdLocationPin } from 'react-icons/md'
 
 const HomePages = () => {
   return (
@@ -46,8 +48,23 @@ const HomePages = () => {
               <HomeCard/>
             </HomeCards>
         </HomeService>
-
+          <Contacts> Loja </Contacts>
         <Catergories/>
+          <Contacts> Contatos </Contacts>
+          <ContactsContainer>
+          <ContactsInformations>
+                <ContactsInformation> <BsWhatsapp size={20}/> (55)999-999</ContactsInformation>
+                <ContactsInformation> <AiOutlineMail size={20}/> barber@teste.com</ContactsInformation>
+                <ContactsInformation> <MdLocationPin size={20}/> R. estradinha do ceu, 999 em Frente ao portão</ContactsInformation>
+             </ContactsInformations>
+             <ContactsInformations>
+                <ContactsInformation> <BsWhatsapp size={20}/> (55)999-999</ContactsInformation>
+                <ContactsInformation> <AiOutlineMail size={20}/> barber@teste.com</ContactsInformation>
+                <ContactsInformation> <MdLocationPin size={20}/> R. estradinha do ceu, 999 em Frente ao portão</ContactsInformation>
+             </ContactsInformations>
+
+          </ContactsContainer>
+          <Footer> Desenvolvido por Alex Britto ©2022</Footer>
     </>
 
   )

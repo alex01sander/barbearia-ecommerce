@@ -110,3 +110,37 @@ background-image: url(https://img.freepik.com/fotos-gratis/close-up-homem-senior
   padding: 30px;
   border-radius: 5px;
 `
+
+export const Contacts = styled.h3`
+  text-align: center;
+  color: darkgoldenrod;
+  font-size: 30px;
+  margin-top: 80px;
+`
+
+export const ContactsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-around;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 100px;
+`
+
+export const ContactsInformations = styled.div`
+  margin: 10px
+`
+
+export const ContactsInformation = styled.p`
+  margin: 20px;
+  font-size: 20px;
+`
+export const Footer = styled.h4`
+
+  background-color: darkgoldenrod;
+  height: 50px;
+  text-align: center;
+  color: white;
+  padding: 10px;
+`
