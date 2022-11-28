@@ -56,6 +56,7 @@ const HeaderComponents = () => {
             )}
             {isAuthenticated && (
               <>
+
               <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
               </>
             )}

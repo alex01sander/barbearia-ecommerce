@@ -1,11 +1,14 @@
-import Catergories from '../../components/categories/categories.components'
-import HeaderComponents from '../../components/header/header.components'
-import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './home.styles'
 
-const HomePage = () => {
+import Catergories from '../../components/categories/categories.components'
+
+import HeaderComponents from '../../components/header/header.components'
+
+import { HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './homes.styles'
+
+const HomePages = () => {
   return (
     <>
-        <HeaderComponents/>
+      <HeaderComponents/>
         <HomeConteiner>
 
         <HomeContent>
@@ -34,8 +37,8 @@ const HomePage = () => {
         </HomeAbout>
         <HomeService>
             <HomeServiceTitle>Nossos Serviços</HomeServiceTitle>
-            <HomeCards>
-              <HomeCard>Cabelo</HomeCard>
+            <HomeCards >
+              <HomeCard/>
               <HomeCard/>
               <HomeCard/>
               <HomeCard/>
@@ -50,4 +53,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default HomePages

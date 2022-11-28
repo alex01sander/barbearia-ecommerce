@@ -93,10 +93,11 @@ export const HomeCards = styled.div`
   display: grid;
   grid-template:  1fr 1fr / 1fr 1fr 1fr;
   justify-content:space-around;
+  
 `
 
 export const HomeCard = styled.div`
-  background-image: url(https://img.freepik.com/fotos-gratis/close-up-homem-senior-no-salao-de-cabeleireiro_23-2149220586.jpg?w=360&t=st=1667416077~exp=1667416677~hmac=9d2a64ec6b2a6d11c568b403fbe61607fda31e95caead6e1122f346798c78942);
+background-image: url(https://img.freepik.com/fotos-gratis/close-up-homem-senior-no-salao-de-cabeleireiro_23-2149220586.jpg?w=360&t=st=1667416077~exp=1667416677~hmac=9d2a64ec6b2a6d11c568b403fbe61607fda31e95caead6e1122f346798c78942);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #1a1a1a;

@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   userReducer,
   cartReducer,
   categoryReducer
+
 })
 
 export default rootReducer
