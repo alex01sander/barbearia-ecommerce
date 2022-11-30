@@ -4,8 +4,9 @@ import Catergories from '../../components/categories/categories.components'
 import HeaderComponents from '../../components/header/header.components'
 import { BsWhatsapp } from 'react-icons/bs'
 import { Contacts, ContactsContainer, ContactsInformation, ContactsInformations, Footer, HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './homes.styles'
-import { AiOutlineMail } from 'react-icons/ai'
+import { AiOutlineInstagram, AiOutlineMail } from 'react-icons/ai'
 import { MdLocationPin } from 'react-icons/md'
+import { FiFacebook } from 'react-icons/fi'
 
 const HomePages = () => {
   return (
@@ -40,7 +41,7 @@ const HomePages = () => {
         <HomeService>
             <HomeServiceTitle>Nossos Serviços</HomeServiceTitle>
             <HomeCards >
-              <HomeCard/>
+              <HomeCard><p>Cabelo</p></HomeCard>
               <HomeCard/>
               <HomeCard/>
               <HomeCard/>
@@ -53,9 +54,17 @@ const HomePages = () => {
           <Contacts> Contatos </Contacts>
           <ContactsContainer>
           <ContactsInformations>
-                <ContactsInformation> <BsWhatsapp size={20}/> (55)999-999</ContactsInformation>
+                <ContactsInformation> <AiOutlineInstagram size={20}/> <a target="_blank"
+             href="#"
+             rel="noreferrer">/BarberShop</a>
+             </ContactsInformation>
+             <ContactsInformation> <FiFacebook/> <a target="_blank"
+             href="#"
+             rel="noreferrer">/BarberShopFace</a>
+             </ContactsInformation>
+
                 <ContactsInformation> <AiOutlineMail size={20}/> barber@teste.com</ContactsInformation>
-                <ContactsInformation> <MdLocationPin size={20}/> R. estradinha do ceu, 999 em Frente ao portão</ContactsInformation>
+
              </ContactsInformations>
              <ContactsInformations>
                 <ContactsInformation> <BsWhatsapp size={20}/> (55)999-999</ContactsInformation>

@@ -94,6 +94,7 @@ export const HomeCards = styled.div`
   grid-template:  1fr 1fr / 1fr 1fr 1fr;
   justify-content:space-around;
   
+  
 `
 
 export const HomeCard = styled.div`
@@ -109,6 +110,23 @@ background-image: url(https://img.freepik.com/fotos-gratis/close-up-homem-senior
   margin: 50px auto;
   padding: 30px;
   border-radius: 5px;
+  p {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    
+    color: white;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: color;
+    p {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+  }
 `
 
 export const Contacts = styled.h3`
@@ -135,6 +153,18 @@ export const ContactsInformations = styled.div`
 export const ContactsInformation = styled.p`
   margin: 20px;
   font-size: 20px;
+  border: none;
+
+  &:link{
+        color: black;
+        border: none;
+  }
+
+ a:visited {
+  color: black;
+  
+ }
+
 `
 export const Footer = styled.h4`
 
