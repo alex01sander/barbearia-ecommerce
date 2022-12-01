@@ -3,12 +3,14 @@ import Catergories from '../../components/categories/categories.components'
 
 import HeaderComponents from '../../components/header/header.components'
 import { BsWhatsapp } from 'react-icons/bs'
-import { Contacts, ContactsContainer, ContactsInformation, ContactsInformations, Footer, HomeAbout, HomeAbouted, HomeAboutImage, HomeAboutSubTitle, HomeAboutTitle, HomeBackground, HomeCard, HomeCards, HomeConteiner, HomeContent, HomeService, HomeServiceTitle, HomeSubTitle, HomeTitle } from './homes.styles'
+
 import { AiOutlineInstagram, AiOutlineMail } from 'react-icons/ai'
 import { MdLocationPin } from 'react-icons/md'
 import { FiFacebook } from 'react-icons/fi'
+import { HomeConteiner, HomeContent, HomeTitle, HomeSubTitle, HomeBackground, HomeAbout, HomeAbouted, HomeAboutTitle, HomeAboutSubTitle, HomeAboutImage, HomeService, HomeServiceTitle, Contacts, ContactsContainer, ContactsInformations, ContactsInformation, Footer } from './home.styled'
+import ServicesComponents from '../../components/service/service.components'
 
-const HomePages = () => {
+const ServiceComponents = () => {
   return (
     <>
       <HeaderComponents/>
@@ -40,16 +42,10 @@ const HomePages = () => {
         </HomeAbout>
         <HomeService>
             <HomeServiceTitle>Nossos Serviços</HomeServiceTitle>
-            <HomeCards >
-              <HomeCard><p>Cabelo</p></HomeCard>
-              <HomeCard/>
-              <HomeCard/>
-              <HomeCard/>
-              <HomeCard/>
-              <HomeCard/>
-            </HomeCards>
+           {/* HomeCards */}
+           <ServicesComponents/>
         </HomeService>
-          <Contacts> Loja </Contacts>
+          <Contacts> Loja </Contacts><small></small>
         <Catergories/>
           <Contacts> Contatos </Contacts>
           <ContactsContainer>
@@ -79,4 +75,4 @@ const HomePages = () => {
   )
 }
 
-export default HomePages
+export default ServiceComponents
