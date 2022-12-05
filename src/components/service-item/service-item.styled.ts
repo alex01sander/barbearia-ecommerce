@@ -18,7 +18,21 @@ background-image: ${(props) => `url('${props.backgroundImage}')`};
   margin: 50px auto;
   padding: 30px;
   border-radius: 5px;
+  background-blend-mode:color-dodge;
+
+  .react-icons {
+  
+  color: yellow;
+}
+  
+  h2{
+    font-family: 'Permanent Marker', cursive;
+    visibility: visible;
+      opacity: 1;
+  }
+
   p {
+    
     visibility: hidden;
     opacity: 0;
     transition: all 0.5s ease;
@@ -33,10 +47,34 @@ background-image: ${(props) => `url('${props.backgroundImage}')`};
       visibility: visible;
       opacity: 1;
     }
+
+    h2{
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    
     
  }`
 
 export const ServiceCardName = styled.p` 
     text-align: center;
-    color: red;
+    padding:20px;
+    
+    
+
+
+    p{
+      margin-top: 25px;
+      font-family: 'Permanent Marker', cursive;
+      color: yellow;
+    }
+`
+
+export const ServiceTitle = styled.h2`
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    color: darkgoldenrod;
+    
 `
