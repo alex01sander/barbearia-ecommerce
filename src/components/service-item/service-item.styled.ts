@@ -53,28 +53,35 @@ background-image: ${(props) => `url('${props.backgroundImage}')`};
       opacity: 0;
       transition: all 0.5s ease;
     }
-
+ }
+ 
+ @media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    text-align:center;
     
-    
- }`
+  }
+ `
 
 export const ServiceCardName = styled.p` 
     text-align: center;
     padding:20px;
     
-    
-
-
     p{
       margin-top: 25px;
       font-family: 'Permanent Marker', cursive;
       color: yellow;
     }
 `
+export const ServiceTitled = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content:center;
+   
+`
 
 export const ServiceTitle = styled.h2`
-    text-align: center;
     font-family: 'Permanent Marker', cursive;
     color: darkgoldenrod;
-    
 `

@@ -23,6 +23,10 @@ export const HomeTitle = styled.h1`
   color: rgb(247, 152, 44);
   margin-right: 40rem;
   font-family: 'Permanent Marker', cursive;
+
+  @media (max-width: 768px){
+   min-width:800px;
+  }
 `
 
 export const HomeSubTitle = styled.p`
@@ -30,7 +34,12 @@ export const HomeSubTitle = styled.p`
   font-family: 'Koulen', cursive;
   font-size: 80px;
   margin-right: 39rem;
-  margin-top: 0
+  margin-top: 0;
+
+  @media (max-width: 768px){
+   font-size:60px;
+  }
+ 
 `
 
 export const HomeBackground = styled.div`
@@ -48,6 +57,15 @@ export const HomeAbout = styled.div`
   display: flex;
   flex-direction: row;
   gap: 100px;
+
+  @media (max-width: 768px){
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+   
+  }
 `
 export const HomeAbouted = styled.div`
   margin-left: 100px;
@@ -65,7 +83,14 @@ export const HomeAboutTitle = styled.h3`
 export const HomeAboutSubTitle = styled.p`
   max-width: 400px;
   font-size: 20px;
-  font-family: 'Montserrat', sans-serif;  
+  font-family: 'Montserrat', sans-serif; 
+  
+  @media (max-width: 768px){
+    text-align:center;
+    min-width:200px;
+    padding:10px;
+    margin:0;
+  }
 `
 
 export const HomeAboutImage = styled.div`
@@ -74,6 +99,10 @@ export const HomeAboutImage = styled.div`
     background-size:cover;  
     width: 50%;
     height: 100vh;
+
+    @media (max-width: 768px){
+   width:100%;
+  }
 `
 
 export const HomeService = styled.div` 
@@ -87,6 +116,8 @@ export const HomeServiceTitle = styled.h3`
   color: white;
   text-align: center;
   padding: 10px;
+
+  
 `
 
 export const Contacts = styled.h3`
@@ -94,6 +125,8 @@ export const Contacts = styled.h3`
   color: darkgoldenrod;
   font-size: 30px;
   margin-top: 80px;
+
+  
 `
 
 export const ContactsContainer = styled.div`
@@ -124,8 +157,67 @@ export const ContactsInformation = styled.p`
   color: black;
   
  }
+ @media (max-width: 768px){
+    min-width:195px;
+  }
+
+ `
+export const TimeTitle = styled.h4`
+   font-size: 30px;
+   height: 50px;
+   text-align: center;
+   color: darkgoldenrod;
+   padding: 10px;
+
+   @media (max-width: 768px){
+    margin-top:1000px;
+  }
+ `
+
+export const TimeContainer = styled.div`
+  display: grid;
+  grid-template:  1fr 1fr / 1fr 1fr ;
+  text-align:center;
+  margin-top:10px;
 
 `
+
+export const TimeContainers = styled.p`
+font-size: 20px;
+padding: 10px;
+margin-top: 10px;
+
+
+`
+
+export const ButtonTimes = styled.h4`
+background-color:darkgoldenrod;
+color: white;
+margin: auto;
+width:200px;
+height: 30px;
+padding:5px;
+align-items:center;
+text-align: center;
+border-radius: 10px;
+cursor: pointer;
+
+&:link{
+        color: white;
+        border: none;
+  }
+
+ a:visited {
+  color: white;
+  
+ }
+
+ @media (max-width: 768px){
+    margin-top:15px;
+  }
+
+`
+
 export const Footer = styled.h4`
 
   background-color: darkgoldenrod;
