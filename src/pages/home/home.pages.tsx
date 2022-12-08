@@ -69,15 +69,15 @@ const ServiceComponents = () => (
     <ContactsContainer>
       <ContactsInformations>
         <ContactsInformation> <AiOutlineInstagram size={20} /> <a target="_blank"
-          href="#"
+          href="https://www.instagram.com/"
           rel="noreferrer">/BarberShop</a>
         </ContactsInformation>
         <ContactsInformation> <FiFacebook /> <a target="_blank"
-          href="#"
+          href="https://www.facebook.com/"
           rel="noreferrer">/BarberShopFace</a>
         </ContactsInformation>
         <ContactsInformation> <FiTwitter /> <a target="_blank"
-          href="#"
+          href="https://twitter.com/"
           rel="noreferrer">@Barber_shop</a>
         </ContactsInformation>
 

@@ -113,10 +113,10 @@ export const HomeService = styled.div`
 export const HomeServiceTitle = styled.h3`
   font-size: 50px;
   margin-top: 50px;
-  color: white;
+  color: darkgoldenrod;
   text-align: center;
   padding: 10px;
-
+  font-family: 'Permanent Marker', cursive;
   
 `
 
@@ -125,7 +125,7 @@ export const Contacts = styled.h3`
   color: darkgoldenrod;
   font-size: 30px;
   margin-top: 80px;
-
+  font-family: 'Permanent Marker', cursive;
   
 `
 
@@ -168,7 +168,7 @@ export const TimeTitle = styled.h4`
    text-align: center;
    color: darkgoldenrod;
    padding: 10px;
-
+   font-family: 'Permanent Marker', cursive;
    @media (max-width: 768px){
     margin-top:1000px;
   }
