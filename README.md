@@ -32,6 +32,8 @@ o Formulário de cadastro esta integrado o react-form para melhorar a perfomece,
 
 <b>Typescript</b>
 
+<b>Link do projeto></b> https://heartfelt-marzipan-2ebe85.netlify.app/
+
 
 
 
