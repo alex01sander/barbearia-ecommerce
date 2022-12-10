@@ -26,8 +26,12 @@ o Formulário de cadastro esta integrado o react-form para melhorar a perfomece,
 
 <b>REACT:</b> React-router, react-form, react-icons, Redux
 
-<b>Styled-Components:</b>
+<b>Styled-Components</b>
 
-<b>Firebase:</b>
+<b>Firebase</b>
+
+<b>Typescript</b>
+
+
 
 
