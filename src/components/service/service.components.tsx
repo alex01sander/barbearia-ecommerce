@@ -1,39 +1,28 @@
-
 import ServiceItem from '../service-item/service-item.components'
 import { HomeCards } from './service.styled'
 
-import { getDocs, collection } from '@firebase/firestore'
-import { db } from '../../config/firebase.config'
-import { useEffect, useState } from 'react'
-import Services from '../../types/service.types'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { useDispatch } from 'react-redux'
+import { fetchServices } from '../../store/reducers/service/service.action'
+import { useEffect } from 'react'
 
 const ServicesComponents = () => {
-  const [services, setServices] = useState<Services[]>([])
+  const { services } = useAppSelector(state => state.serviceReducer)
 
-  const fetchService = async () => {
-    try {
-      const serviceFromFirestore: Services[] = []
-      const querySnapshot = await getDocs(collection(db, 'dash'))
-
-      querySnapshot.forEach((doc: any) => {
-        serviceFromFirestore.push(doc.data())
-
-        setServices(serviceFromFirestore)
-      })
-    } catch (error) {
-
-    }
-  }
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetchService()
-  })
+    dispatch(fetchServices() as any)
+  }, [])
+
   return (
-    <HomeCards>
-        {services.map((service) => (
-            <div key={service.id}><ServiceItem service={service}/></div>
-        ))}
-    </HomeCards>
+    <>
+      <HomeCards>
+          {services.map((service) => (
+              <div key={service.id}><ServiceItem service={service}/></div>
+          ))}
+      </HomeCards>
+    </>
   )
 }
 

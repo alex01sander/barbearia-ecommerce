@@ -1,5 +1,6 @@
 import { DocumentData, QueryDocumentSnapshot, SnapshotOptions } from '@firebase/firestore'
 import Category from '../types/category.types'
+import Services from '../types/service.types'
 import User from '../types/user.types'
 
 export const categoryConverter = {
@@ -19,6 +20,24 @@ export const categoryConverter = {
       products: data.products
     }
   }
+}
+
+export const serviceConverter = {
+  toFirestore (service: Services): DocumentData {
+    return { ...service }
+  },
+
+  fromFirestore (snapshot: QueryDocumentSnapshot, options: SnapshotOptions):Services {
+    const data = snapshot.data(options)
+
+    return {
+      id: data.id,
+      tabela: data.tabela,
+      imageUrl: data.imageUrl,
+      name: data.name
+    }
+  }
+
 }
 
 export const userConverter = {
